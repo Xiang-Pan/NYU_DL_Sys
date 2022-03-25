@@ -1,5 +1,7 @@
 */cached_models/
 */cached_datasets/
+**/outputs/
+**/*.zip
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

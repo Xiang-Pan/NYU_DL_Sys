@@ -1,0 +1,54 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/xiangpan/Labs/NYU_DL_Sys/HW2/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	/p5.9.20210905.0/
+LeNet5_BN	3_2.py	/^class LeNet5_BN(nn.Module):$/;"	c
+LeNet5_BN_Dropout	3_2.py	/^class LeNet5_BN_Dropout(nn.Module):$/;"	c
+LeNet5_Dropout	3_2.py	/^class LeNet5_Dropout(nn.Module):$/;"	c
+MLP	4_1.py	/^class MLP(nn.Module):$/;"	c
+MLPDataset	4_1.py	/^class MLPDataset(torch.utils.data.Dataset):$/;"	c
+__getitem__	4_1.py	/^    def __getitem__(self, index):$/;"	m	class:MLPDataset
+__init__	3_2.py	/^    def __init__(self):$/;"	m	class:LeNet5_BN
+__init__	3_2.py	/^    def __init__(self):$/;"	m	class:LeNet5_BN_Dropout
+__init__	3_2.py	/^    def __init__(self):$/;"	m	class:LeNet5_Dropout
+__init__	4_1.py	/^    def __init__(self, layer_sizes):$/;"	m	class:MLP
+__init__	4_1.py	/^    def __init__(self, n):$/;"	m	class:MLPDataset
+__len__	4_1.py	/^    def __len__(self):$/;"	m	class:MLPDataset
+bn_layer_dict	3_2.py	/^bn_layer_dict = {$/;"	v
+bn_layer_list	3_2.py	/^bn_layer_list = [model.conv1_bn, model.conv2_bn, model.fc1_bn, model.fc2_bn, model.fc3_bn]$/;"	v
+df	3_2.py	/^df = pd.DataFrame(columns=['layer_name', 'mean', 'var'])$/;"	v
+f_function	4_1.py	/^def f_function(x):$/;"	f
+forward	3_2.py	/^    def forward(self, x):$/;"	m	class:LeNet5_BN
+forward	3_2.py	/^    def forward(self, x):$/;"	m	class:LeNet5_BN_Dropout
+forward	3_2.py	/^    def forward(self, x):$/;"	m	class:LeNet5_Dropout
+forward	4_1.py	/^    def forward(self, x):$/;"	m	class:MLP
+get_data	4_1.py	/^def get_data(n):$/;"	f
+main	4_1.py	/^def main():$/;"	f
+model	5_1.py	/^model = torch.hub.load('pytorch\/vision:v0.10.0', model='googlenet', pretrained=False)$/;"	v
+nn	4_1.py	/^import torch.nn as nn$/;"	I	nameref:module:torch.nn
+nn	5_1.py	/^import torch.nn as nn$/;"	I	nameref:module:torch.nn
+np	4_1.py	/^import numpy as np$/;"	I	nameref:module:numpy
+pd	3_2.py	/^import pandas as pd$/;"	I	nameref:module:pandas
+set_trainer	4_1.py	/^    def set_trainer(self):$/;"	m	class:MLP
+test_data	4_1.py	/^def test_data():$/;"	f
+test_dataloader	5_1.py	/^test_dataloader = DataLoader(test_dataset, batch_size=64, shuffle=True)$/;"	v
+test_dataset	5_1.py	/^test_dataset = torchvision.datasets.FashionMNIST(root='.\/cached_datasets\/FashionMNIST', train=/;"	v
+test_mlp	4_1.py	/^    def test_mlp(self):$/;"	m	class:MLP
+test_model	5_1.py	/^def test_model(model, test_dataloader):$/;"	f
+test_size	4_1.py	/^test_size = total * 0.2$/;"	v
+test_transform	5_1.py	/^test_transform = train_transform$/;"	v
+total	4_1.py	/^total = 100000$/;"	v
+train_dataloader	5_1.py	/^train_dataloader = DataLoader(train_dataset, batch_size=64, shuffle=True)$/;"	v
+train_dataset	5_1.py	/^train_dataset = torchvision.datasets.FashionMNIST(root='.\/cached_datasets\/FashionMNIST', train/;"	v
+train_mlp	4_1.py	/^    def train_mlp(self):$/;"	m	class:MLP
+train_model	5_1.py	/^def train_model(model, train_dataloader):$/;"	f
+train_size	4_1.py	/^train_size = total * 0.8$/;"	v
+train_transform	5_1.py	/^train_transform = transforms.Compose([$/;"	v
+y_function	4_1.py	/^def y_function(x):$/;"	f
