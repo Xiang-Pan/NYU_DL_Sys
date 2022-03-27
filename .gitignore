@@ -8,6 +8,7 @@ __pycache__/
 *$py.class
 **/outputs/
 **/third_party/
+**/wandb/
 
 # C extensions
 *.so
