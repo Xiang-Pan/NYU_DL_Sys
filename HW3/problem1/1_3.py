@@ -96,6 +96,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--use_dropout', action='store_true')
     parser.add_argument('--optimizer_name', type=str, default="Adagrad")
+    parser.add_argument('--gpus', nargs='+', type=int, default=[0])
     args = parser.parse_args()
     run = wandb.init(group='1.3')
     run.display(height=720)
@@ -107,6 +108,6 @@ if __name__ == '__main__':
 
     wandb.run.name = log_name
     logger = WandbLogger(project='HW3_1', save_dir="./outputs", name=log_name)
-    trainer = pl.Trainer(gpus=1, max_epochs=200, logger=logger)
+    trainer = pl.Trainer(gpus=args.gpus, max_epochs=200, logger=logger)
     model = MLPLightningModule(hidden_size=1000, output_size=10, optimizer_name=optimizer_name, use_dropout=args.use_dropout)
     trainer.fit(model)
