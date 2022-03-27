@@ -1,7 +1,7 @@
 '''
 Author: Xiang Pan
 Date: 2022-03-27 12:53:32
-LastEditTime: 2022-03-27 13:04:15
+LastEditTime: 2022-03-27 13:10:15
 LastEditors: Xiang Pan
 Description: 
 FilePath: /HW3/problem4/4_2.py
@@ -12,6 +12,9 @@ import torch.nn.functional as F
 import torch.optim as optim
 import pytorch_lightning as pl
 import torch
+import sys
+sys.path.append('.')
+sys.path.append('..')
 from models.resnet44 import resnet44
 import torchvision.datasets as datasets
 import torchmetrics
@@ -63,11 +66,12 @@ class ResNetLightningModule(pl.LightningModule):
         train_dataset = datasets.CIFAR10(root="./cached_datasets/CIFAR10", train=True, transform=train_transform, download=True)
         self.train_dataset, self.val_dataset = torch.utils.data.random_split(train_dataset, [40000, 10000])
         self.train_dataset.transform = train_transform
-        self.val_dataset.transform = transforms.Compose([transforms.ToTensor(),])
+        self.val_dataset.transform = transforms.Compose([transforms.ToTensor()])
         
         return torch.utils.data.DataLoader(self.train_dataset, batch_size=self.batch_size, shuffle=True, num_workers=2, pin_memory=True)
 
-    def validation_dataloader(self):
+    def val_dataloader(self):
+        self.train_dataloader()
         return torch.utils.data.DataLoader(self.val_dataset, batch_size=self.batch_size, shuffle=False, num_workers=2, pin_memory=True)
 
     def test_dataloader(self):
@@ -122,4 +126,4 @@ if __name__ == '__main__':
                             logger=logger, 
                             profiler="simple",)
     model = ResNetLightningModule(batch_size=args.batch_size, optimizer_name=optimizer_name, aug_method=args.aug_method)
-    trainer.fit(model, [model.train_dataloader(), model.validation_dataloader()])
+    trainer.fit(model)
