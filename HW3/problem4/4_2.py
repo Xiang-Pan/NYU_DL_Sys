@@ -1,7 +1,7 @@
 '''
 Author: Xiang Pan
 Date: 2022-03-27 12:53:32
-LastEditTime: 2022-03-27 13:10:15
+LastEditTime: 2022-03-27 14:01:56
 LastEditors: Xiang Pan
 Description: 
 FilePath: /HW3/problem4/4_2.py
@@ -71,8 +71,9 @@ class ResNetLightningModule(pl.LightningModule):
         return torch.utils.data.DataLoader(self.train_dataset, batch_size=self.batch_size, shuffle=True, num_workers=2, pin_memory=True)
 
     def val_dataloader(self):
-        self.train_dataloader()
-        return torch.utils.data.DataLoader(self.val_dataset, batch_size=self.batch_size, shuffle=False, num_workers=2, pin_memory=True)
+        # self.train_dataloader()
+        return self.test_dataloader()
+        # return torch.utils.data.DataLoader(self.val_dataset, batch_size=self.batch_size, shuffle=False, num_workers=2, pin_memory=True)
 
     def test_dataloader(self):
         test_transform = transforms.Compose([

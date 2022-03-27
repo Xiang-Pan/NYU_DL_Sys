@@ -1,0 +1,29 @@
+{
+    "os": "Linux-5.15.28-1-MANJARO-x86_64-with-glibc2.35",
+    "python": "3.9.7",
+    "heartbeatAt": "2022-03-27T18:02:33.670119",
+    "startedAt": "2022-03-27T18:02:31.807167",
+    "docker": null,
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "gpu_count": 1,
+    "cpu_count": 20,
+    "cuda": null,
+    "args": [
+        "--aug_method",
+        "simple_aug",
+        "--gpus",
+        "0"
+    ],
+    "state": "running",
+    "program": "/home/xiangpan/Labs/NYU_DL_Sys/HW3/problem4/4_2.py",
+    "codePath": "HW3/problem4/4_2.py",
+    "git": {
+        "remote": "git@github.com:Xiang-Pan/NYU_DL_Sys.git",
+        "commit": "61efdb32797f113b02c55569ea70bb1c900c46a9"
+    },
+    "email": "xiangpan@nyu.edu",
+    "root": "/home/xiangpan/Labs/NYU_DL_Sys",
+    "host": "manjaro",
+    "username": "xiangpan",
+    "executable": "/home/xiangpan/.conda/envs/39/bin/python"
+}
