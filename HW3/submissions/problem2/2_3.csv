@@ -1,0 +1,4 @@
+gpu_nums,batch_32_time,batch_32_speedup,batch_128_time,batch_128_speedup,batch_512_time,batch_512_speedup,batch_2048_time,batch_2048_speedup,batch_32_communication_time,batch_128_communication_time,batch_512_communication_time,batch_2048_communication_time,batch_32_calculation_time,batch_128_calculation_time,batch_512_calculation_time,batch_2048_calculation_time
+1,38.0,1.0,16.0,1.0,13.0,1.0,13.0,1.0,0.0,0.0,0.0,0.0,38.0,16.0,13.0,13.0
+2,67.0,0.5671641791044776,18.0,0.8888888888888888,9.0,1.4444444444444444,10.0,1.3,48.0,10.0,2.5,3.5,19.0,8.0,6.5,6.5
+4,121.0,0.3140495867768595,30.0,0.5333333333333333,11.0,1.1818181818181819,11.0,1.1818181818181819,111.5,26.0,7.75,7.75,9.5,4.0,3.25,3.25
