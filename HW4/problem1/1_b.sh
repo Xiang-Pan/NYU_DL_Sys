@@ -7,5 +7,5 @@
  # @FilePath: /HW4/problem1/1_b.sh
  # @Description: 
 ### 
-python problem1/1_a.py --gpus 3 --lr 0.01
-python problem1/1_a.py --gpus 4 --lr 0.1
+python problem1/1_a.py --gpus 3 --lr 0.01 &
+python problem1/1_a.py --gpus 4 --lr 0.1 &
