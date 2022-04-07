@@ -2,7 +2,7 @@
 Created by: Xiang Pan
 Date: 2022-04-06 19:01:24
 LastEditors: Xiang Pan
-LastEditTime: 2022-04-06 20:01:47
+LastEditTime: 2022-04-06 20:30:43
 Email: xiangpan@nyu.edu
 FilePath: /HW4/problem1/1_a.py
 Description: 
@@ -42,7 +42,7 @@ class ResNetLightningModule(pl.LightningModule):
         acc = self.acc_metric(y_hat, y)
         self.log('train_loss', loss, prog_bar=False, on_epoch=True)
         self.log('train_acc', acc, prog_bar=False, on_epoch=True)
-        logs = {'train_loss': loss}
+        return loss
 
     def validation_step(self, batch, batch_idx):
         x, y = batch
@@ -51,11 +51,20 @@ class ResNetLightningModule(pl.LightningModule):
         acc = self.acc_metric(y_hat, y)
         self.log('val_loss', loss, prog_bar=False, on_epoch=True)
         self.log('val_acc', acc, prog_bar=False, on_epoch=True)
+        return loss
+    
+    def test_step(self, batch, batch_idx):
+        x, y = batch
+        y_hat = self.model(x)
+        loss = self.loss_fn(y_hat, y)
+        acc = self.acc_metric(y_hat, y)
+        self.log('test_loss', loss, prog_bar=False, on_epoch=True)
+        self.log('test_acc', acc, prog_bar=False, on_epoch=True)
+        return loss
 
     def configure_optimizers(self):
         lr = 0.001
         momentum = 0.9
-        batch_size = 64
         optimizer = torch.optim.SGD(self.model.parameters(), lr=lr, momentum=momentum)
 
         # multi_step_lr_scheduler
@@ -81,10 +90,11 @@ if __name__ == "__main__":
     test_dataloader = torch.utils.data.DataLoader(test_dataset, batch_size=64, shuffle=False)
 
     run = wandb.init(group=args.group)
-    log_name = f'{args.group}_lr' + args.lr
+    log_name = f'{args.group}_lr' + str(args.lr)
     logger = WandbLogger(save_dir="./outputs", name=log_name)
 
     trainer = pl.Trainer(gpus=args.gpus, max_epochs=200, logger=logger)
+    # model = ResNetLightningModule.load_from_checkpoint("./outputs/2w2cdm6c/checkpoints/epoch=199-step=156400.ckpt")
     model = ResNetLightningModule()
     trainer.fit(model, train_dataloader)
     trainer.test(model, test_dataloader)
