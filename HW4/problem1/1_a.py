@@ -2,7 +2,7 @@
 Created by: Xiang Pan
 Date: 2022-04-06 19:01:24
 LastEditors: Xiang Pan
-LastEditTime: 2022-04-06 19:50:52
+LastEditTime: 2022-04-06 20:01:47
 Email: xiangpan@nyu.edu
 FilePath: /HW4/problem1/1_a.py
 Description: 
@@ -20,10 +20,14 @@ from torch.optim.lr_scheduler import MultiStepLR
 from pytorch_lightning.loggers import WandbLogger
 
 class ResNetLightningModule(pl.LightningModule):
-    def __init__(self):
+    def __init__(self, fix_backbone=False):
         super(ResNetLightningModule, self).__init__()
         self.model = resnet50(pretrained=True, progress=True)
         self.model.fc = nn.Linear(2048, 100)
+        if fix_backbone:
+            for param in self.model.parameters():
+                param.requires_grad = False
+            self.model.fc.requires_grad = True
 
         self.loss_fn = nn.CrossEntropyLoss()
         self.acc_metric = torchmetrics.Accuracy()
@@ -64,7 +68,9 @@ if __name__ == "__main__":
     # prepare_dataset
     parser = argparse.ArgumentParser()
     parser.add_argument('--gpus', nargs='+', type=int, default=[0])
+    parser.add_argument('--group', type=str, default="1_a")
     parser.add_argument('--lr', type=float, default=0.001)
+    parser.add_argument('--fix_backbone', action='store_true')
     args = parser.parse_args()
     train_transform = transforms.Compose([transforms.ToTensor()])
     test_transform = transforms.Compose([transforms.ToTensor()])
@@ -74,9 +80,9 @@ if __name__ == "__main__":
     train_dataloader = torch.utils.data.DataLoader(train_dataset, batch_size=64, shuffle=True)
     test_dataloader = torch.utils.data.DataLoader(test_dataset, batch_size=64, shuffle=False)
 
-    run = wandb.init(group='1_a')
-    log_name = '1_a_lr' + args.lr
-    logger = WandbLogger(project='HW4_1', save_dir="./outputs", name=log_name)
+    run = wandb.init(group=args.group)
+    log_name = f'{args.group}_lr' + args.lr
+    logger = WandbLogger(save_dir="./outputs", name=log_name)
 
     trainer = pl.Trainer(gpus=args.gpus, max_epochs=200, logger=logger)
     model = ResNetLightningModule()
