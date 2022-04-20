@@ -2,7 +2,7 @@
 Created by: Xiang Pan
 Date: 2022-04-06 19:01:24
 LastEditors: Xiang Pan
-LastEditTime: 2022-04-06 20:30:43
+LastEditTime: 2022-04-07 11:42:54
 Email: xiangpan@nyu.edu
 FilePath: /HW4/problem1/1_a.py
 Description: 
