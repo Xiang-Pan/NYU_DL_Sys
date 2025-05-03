@@ -2,7 +2,7 @@
  # @Created by: Xiang Pan
  # @Date: 2022-04-09 04:47:31
  # @LastEditors: Xiang Pan
- # @LastEditTime: 2022-04-23 01:39:50
+ # @LastEditTime: 2022-05-06 23:57:14
  # @Email: xiangpan@nyu.edu
  # @FilePath: /HW5/make_submissions.sh
  # @Description: 
@@ -10,6 +10,9 @@
 echo "Start to make submissions"
 hw_name=$(basename $PWD)
 echo "hwname: $hw_name"
+
+cp -r ./third_party/tutorials/tutorials/OnnxRuntimeServerSSDModel.ipynb .
+jupyter-nbconvert OnnxRuntimeServerSSDModel.ipynb --to pdf
 
 # get all the problems
 problems=$(ls -d problem*.ipynb)
@@ -25,4 +28,6 @@ cp *.ipynb ./submissions/     # copy all the ipynb files
 cp *.pdf ./submissions/       # copy all the pdf files
 cp -r problem* ./submissions/ # copy all the problem folders
 cp -r ./README.md ./submissions/
+rm ./submissions/**/*.h5
+rm ./submissions/**/*.onnx
 zip -r Intro_DL_Sys_${hw_name}_xp2030.zip ./submissions/
